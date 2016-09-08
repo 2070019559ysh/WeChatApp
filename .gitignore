@@ -1,0 +1,8 @@
+*.suo
+*.dll
+*.pdb
+*.cache
+*.log
+*/obj/
+.vs/
+*.force
