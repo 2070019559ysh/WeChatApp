@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChatApp.Common", "WeChatA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeChatApp.LinkUp", "WeChatApp.LinkUp\WeChatApp.LinkUp.csproj", "{8615AFB8-1CC2-4B12-A29A-1DBEC04FEA78}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WeChatApp.Database", "WeChatApp.Database\WeChatApp.Database.sqlproj", "{C6220831-5C13-4E9C-807B-5B550118DD5A}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WeChatApp.Database", "WeChatApp.Database\WeChatApp.Database.sqlproj", "{CF58472A-51A5-48C5-8F1C-EB396041BE41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,12 +53,12 @@ Global
 		{8615AFB8-1CC2-4B12-A29A-1DBEC04FEA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8615AFB8-1CC2-4B12-A29A-1DBEC04FEA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8615AFB8-1CC2-4B12-A29A-1DBEC04FEA78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6220831-5C13-4E9C-807B-5B550118DD5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6220831-5C13-4E9C-807B-5B550118DD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6220831-5C13-4E9C-807B-5B550118DD5A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{C6220831-5C13-4E9C-807B-5B550118DD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6220831-5C13-4E9C-807B-5B550118DD5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6220831-5C13-4E9C-807B-5B550118DD5A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CF58472A-51A5-48C5-8F1C-EB396041BE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF58472A-51A5-48C5-8F1C-EB396041BE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF58472A-51A5-48C5-8F1C-EB396041BE41}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CF58472A-51A5-48C5-8F1C-EB396041BE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF58472A-51A5-48C5-8F1C-EB396041BE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF58472A-51A5-48C5-8F1C-EB396041BE41}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

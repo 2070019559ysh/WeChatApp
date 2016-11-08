@@ -221,7 +221,6 @@ namespace WeChatApp.Service
             }
             catch (Exception)
             {
-                
                 throw;
             }
         }

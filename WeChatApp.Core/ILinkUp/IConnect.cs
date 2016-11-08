@@ -18,5 +18,11 @@ namespace WeChatApp.Core.ILinkUp
         /// <param name="request">当前请求对象</param>
         /// <returns>请求是否来自微信</returns>
         bool CheckSignature(HttpRequestBase request);
+
+        /// <summary>
+        /// 获取公众号的AccessToken
+        /// </summary>
+        /// <returns>微信提供的AccessToken</returns>
+        string GetAccessToken();
     }
 }

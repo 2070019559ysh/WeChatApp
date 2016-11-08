@@ -40,14 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ILinkUp\IConnect.cs" />
+    <Compile Include="IManage\IWeChatDataManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IService\IWeChatDataService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="IManage\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WeChatApp.Model\WeChatApp.Model.csproj">
       <Project>{fe7f6fab-44f5-49c8-b1b7-6e43a5ce33ec}</Project>

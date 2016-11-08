@@ -15,11 +15,12 @@
     <AssemblyName>WetChatApp.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,7 +89,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -252,6 +252,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WeChatApp.Common\WeChatApp.Common.csproj">
+      <Project>{A8614A2F-8AF8-4A57-9B8E-1F9B6382147D}</Project>
+      <Name>WeChatApp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChatApp.Core\WeChatApp.Core.csproj">
       <Project>{b0aa9a3b-d2b7-45d7-8747-4654f9e0c937}</Project>
       <Name>WeChatApp.Core</Name>
@@ -260,9 +264,17 @@
       <Project>{8615afb8-1cc2-4b12-a29a-1dbec04fea78}</Project>
       <Name>WeChatApp.LinkUp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WeChatApp.Manage\WeChatApp.Manage.csproj">
+      <Project>{215e8de8-3635-4d73-a71f-bcb80196de7e}</Project>
+      <Name>WeChatApp.Manage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChatApp.Model\WeChatApp.Model.csproj">
       <Project>{fe7f6fab-44f5-49c8-b1b7-6e43a5ce33ec}</Project>
       <Name>WeChatApp.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeChatApp.Service\WeChatApp.Service.csproj">
+      <Project>{54dbbdb5-0842-4e0d-8d40-a131d0498d96}</Project>
+      <Name>WeChatApp.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -283,7 +295,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3852</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://127.0.0.1:3852/</IISUrl>
+          <IISUrl>http://localhost:3852</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:3852/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://na2mrztvii.proxy.qqbrowser.cc</CustomServerUrl>

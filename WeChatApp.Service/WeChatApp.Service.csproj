@@ -45,6 +45,10 @@
     <Compile Include="SqlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WeChatApp.Common\WeChatApp.Common.csproj">
+      <Project>{a8614a2f-8af8-4a57-9b8e-1f9b6382147d}</Project>
+      <Name>WeChatApp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChatApp.Core\WeChatApp.Core.csproj">
       <Project>{b0aa9a3b-d2b7-45d7-8747-4654f9e0c937}</Project>
       <Name>WeChatApp.Core</Name>

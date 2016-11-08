@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WeChatApp.Core.LinkUp;
+using WeChatApp.Core.ILinkUp;
+using WetChatApp.Common;
 
 namespace WeChatApp.Web.Controllers
 {
@@ -14,6 +15,7 @@ namespace WeChatApp.Web.Controllers
         /// 对接微信实体对象
         /// </summary>
         private readonly IConnect connectWeChat;
+        private readonly LogHelper log=new LogHelper(typeof(HomeController));
 
         public HomeController(IConnect connect)
         {
@@ -22,11 +24,16 @@ namespace WeChatApp.Web.Controllers
 
         public ActionResult Index()
         {
+            log.Info("进入Home/Index");
             if (connectWeChat.CheckSignature(Request))
             {
+                log.Info("是微信请求Home/Index");
                 string echostr = Request.QueryString["echostr"];
                 return Content(echostr);//如果请求来自微信服务器，原样返回echostr参数内容
             }
+            log.Info("测试Warn日志");
+            log.Info("测试Error日志");
+            //connectWeChat.GetAccessToken();
             return View();
         }
 

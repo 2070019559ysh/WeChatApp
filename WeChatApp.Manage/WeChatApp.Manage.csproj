@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WeChatApp.Common\WeChatApp.Common.csproj">
+      <Project>{a8614a2f-8af8-4a57-9b8e-1f9b6382147d}</Project>
+      <Name>WeChatApp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WeChatApp.Core\WeChatApp.Core.csproj">
       <Project>{b0aa9a3b-d2b7-45d7-8747-4654f9e0c937}</Project>
       <Name>WeChatApp.Core</Name>
@@ -51,6 +58,9 @@
       <Project>{fe7f6fab-44f5-49c8-b1b7-6e43a5ce33ec}</Project>
       <Name>WeChatApp.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

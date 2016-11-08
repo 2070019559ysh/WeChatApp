@@ -4,4 +4,6 @@
 	[Key] NVARCHAR(100) NOT NULL UNIQUE,
 	[Value] NTEXT NOT NULL,
 	[UpdateTime] DATETIME NOT NULL,
+	CONSTRAINT UQ_WeChatData_Key UNIQUE ([Key])
 )
+

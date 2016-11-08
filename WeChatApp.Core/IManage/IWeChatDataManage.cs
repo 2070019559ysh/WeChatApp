@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using WeChatApp.Model;
 
-namespace WeChatApp.Core.IService
+namespace WeChatApp.Core.IManage
 {
     /// <summary>
-    /// 微信对接涉及的数据进行保存、查询等操作的接口
+    /// 微信对接涉及的数据管理接口
     /// </summary>
-    public interface IWeChatDataService
+    public interface IWeChatDataManage
     {
         /// <summary>
         /// 新增一条微信数据记录
@@ -27,13 +27,6 @@ namespace WeChatApp.Core.IService
         bool InsertOrUpdateWeChatData(WeChatData weChatData);
 
         /// <summary>
-        /// 根据Id或Key更新微信数据记录
-        /// </summary>
-        /// <param name="weChatData">微信数据对象</param>
-        /// <returns>是否更新成功</returns>
-        bool UpdateWeChatData(WeChatData weChatData);
-
-        /// <summary>
         /// 根据微信数据Id查找微信数据对象
         /// </summary>
         /// <param name="id">微信数据Id</param>
@@ -43,7 +36,7 @@ namespace WeChatApp.Core.IService
         /// <summary>
         /// 根据微信数据的Key查找微信数据对象
         /// </summary>
-        /// <param name="id">微信数据的Key</param>
+        /// <param name="key">微信数据的Key</param>
         /// <returns>微信数据对象</returns>
         WeChatData SearchWeChatData(string key);
     }

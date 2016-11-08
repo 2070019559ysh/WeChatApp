@@ -5,14 +5,18 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WeChatApp.Core.ILinkUp;
+using WeChatApp.Core.IManage;
+using WeChatApp.Core.IService;
 using WeChatApp.LinkUp;
+using WeChatApp.Manage;
+using WeChatApp.Service;
 
 namespace WeChatApp.Web.Assistant
 {
     /// <summary>
     /// 定义基于Ninject（依赖注入）的可简化服务位置和依赖关系解析的方法
     /// </summary>
-    public class NinjectDependencyResolver : IDependencyResolver,System.Web.Http.Dependencies.IDependencyResolver
+    public class NinjectDependencyResolver : IDependencyResolver
     {
         private IKernel kernel;
 
@@ -30,7 +34,17 @@ namespace WeChatApp.Web.Assistant
         /// </summary>
         private void AddBinding()
         {
+            #region ILinkUp的依赖注入
             kernel.Bind<IConnect>().To<Connect>();
+            #endregion
+
+            #region IManage的依赖注入
+            kernel.Bind<IWeChatDataManage>().To<WeChatDataManage>();
+            #endregion
+
+            #region ISerice的依赖注入
+            kernel.Bind<IWeChatDataService>().To<WeChatDataService>();
+            #endregion
         }
 
         /// <summary>
@@ -51,11 +65,6 @@ namespace WeChatApp.Web.Assistant
         public IEnumerable<object> GetServices(Type serviceType)
         {
             return this.kernel.GetAll(serviceType);
-        }
-
-        public System.Web.Http.Dependencies.IDependencyScope BeginScope()
-        {
-            return this;
         }
 
         public void Dispose()
