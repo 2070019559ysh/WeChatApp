@@ -31,8 +31,10 @@ namespace WeChatApp.Web.Controllers
                 string echostr = Request.QueryString["echostr"];
                 return Content(echostr);//如果请求来自微信服务器，原样返回echostr参数内容
             }
-            log.Info("测试Warn日志");
-            log.Info("测试Error日志");
+            log.InfoFormat("测试Warn日志,异常参数：{0}",25);
+            log.Warn("测试Warn日志");
+            log.Error("测试Warn日志");
+            log.ErrorFormat("测试Warn日志{0}",new Exception("异常请查看内部信息"),",发生自定义错误");
             //connectWeChat.GetAccessToken();
             return View();
         }
