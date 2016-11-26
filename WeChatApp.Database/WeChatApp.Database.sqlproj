@@ -67,4 +67,7 @@
     <Build Include="Table\WeChatData.sql" />
     <Build Include="Table\Log.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="AfterRelease.sql" />
+  </ItemGroup>
 </Project>
