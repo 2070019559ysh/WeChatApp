@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using WetChatApp.Model;
 
-namespace WeChatApp.Core.IService
+namespace WeChatApp.Core.IManage
 {
     /// <summary>
-    /// 利用数据库存储系统日志信息
+    /// 把系统关键性日志存储到数据库操作接口
     /// </summary>
-    public interface ILogMessageService
+    public interface ILogMessageManager
     {
         /// <summary>
         /// 新增日志信息

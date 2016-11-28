@@ -38,6 +38,7 @@ namespace WeChatApp.Web.Assistant
 
             #region IManage的依赖注入
             kernel.Bind<IWeChatDataManage>().To<WeChatDataManage>();
+            kernel.Bind<ILogMessageManager>().To<LogMessageManager>();
             #endregion
 
             #region ISerice的依赖注入
