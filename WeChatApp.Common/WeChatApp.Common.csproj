@@ -7,8 +7,8 @@
     <ProjectGuid>{A8614A2F-8AF8-4A57-9B8E-1F9B6382147D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WetChatApp.Common</RootNamespace>
-    <AssemblyName>WetChatApp.Common</AssemblyName>
+    <RootNamespace>WeChatApp.Common</RootNamespace>
+    <AssemblyName>WeChatApp.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -7,8 +7,8 @@
     <ProjectGuid>{8615AFB8-1CC2-4B12-A29A-1DBEC04FEA78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WetChatApp.LinkUp</RootNamespace>
-    <AssemblyName>WetChatApp.LinkUp</AssemblyName>
+    <RootNamespace>WeChatApp.LinkUp</RootNamespace>
+    <AssemblyName>WeChatApp.LinkUp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

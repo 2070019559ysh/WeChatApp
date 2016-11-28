@@ -1,8 +1,6 @@
 ﻿using Ninject;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WeChatApp.Core.ILinkUp;
 using WeChatApp.Core.IManage;
@@ -44,6 +42,7 @@ namespace WeChatApp.Web.Assistant
 
             #region ISerice的依赖注入
             kernel.Bind<IWeChatDataService>().To<WeChatDataService>();
+            kernel.Bind<ILogMessageService>().To<LogMessageService>();
             #endregion
         }
 
