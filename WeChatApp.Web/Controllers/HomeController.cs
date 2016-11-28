@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WeChatApp.Core.ILinkUp;
+using WeChatApp.Core.IManage;
 using WetChatApp.Common;
 
 namespace WeChatApp.Web.Controllers
@@ -17,6 +18,10 @@ namespace WeChatApp.Web.Controllers
         private readonly IConnect connectWeChat;
         private readonly LogHelper log=new LogHelper(typeof(HomeController));
 
+        [Inject]
+        public ILogMessageManager logManager;
+
+        [Inject]
         public HomeController(IConnect connect)
         {
             connectWeChat = connect;
@@ -35,6 +40,7 @@ namespace WeChatApp.Web.Controllers
             log.Warn("测试Warn日志");
             log.Error("测试Warn日志");
             log.ErrorFormat("测试Warn日志{0}",new Exception("异常请查看内部信息"),",发生自定义错误");
+            logManager.InsertLog("测试Warn日志{0}", new Exception("异常请查看内部信息"), ",发生自定义错误");
             //connectWeChat.GetAccessToken();
             return View();
         }

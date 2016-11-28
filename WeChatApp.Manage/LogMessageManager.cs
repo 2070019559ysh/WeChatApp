@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using WeChatApp.Core.IManage;
 using WeChatApp.Core.IService;
@@ -22,6 +23,97 @@ namespace WeChatApp.Manage
         [Inject]
         public ILogMessageService logMessageService;
         private readonly LogHelper log = new LogHelper(typeof(LogMessageManager));
+        private readonly Type logType;
+
+        public LogMessageManager(Type logType)
+        {
+            this.logType = logType;
+        }
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        public void Warn(string message)
+        {
+            LogMessage logMessage = new LogMessage()
+            {
+                Level = "Warn",
+                Thread = Thread.CurrentThread.ManagedThreadId,
+                Logger = logType.FullName,
+                LogTime = DateTime.Now,
+                Message = message
+            };
+            logMessageService.InsertLog(logMessage);
+        }
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="arg0">{num}参数值</param>
+        public void WarnFormat(string message, object arg0)
+        {
+            this.Warn(string.Format(message, arg0));
+        }
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="args">{num}参数值</param>
+        public void WarnFormat(string message, params object[] args)
+        {
+            this.Warn(string.Format(message, args));
+        }
+
+        /// <summary>
+        /// 记录Error级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="ex">异常对象</param>
+        public void Error(string message, Exception ex = null)
+        {
+            LogMessage logMessage = new LogMessage()
+            {
+                Level = "Error",
+                Thread = Thread.CurrentThread.ManagedThreadId,
+                Logger = logType.FullName,
+                LogTime = DateTime.Now,
+                Message = message
+            };
+            if (ex != null)
+            {
+                logMessage.ExMessage = string.Format("异常信息：{0}", ex.Message);
+                logMessage.ExMessage += string.Format("异常堆栈：{0}", ex.StackTrace);
+                if (ex.InnerException != null)
+                {
+                    logMessage.ExMessage += string.Format("异常信息：{0}", ex.InnerException.Message);
+                    logMessage.ExMessage += string.Format("异常堆栈：{0}", ex.InnerException.StackTrace);
+                }
+            }
+            logMessageService.InsertLog(logMessage);
+        }
+
+        /// <summary>
+        /// 记录Error级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="arg0">{num}参数值</param>
+        public void ErrorFormat(string message, Exception ex = null, object arg0 = null)
+        {
+            this.Error(string.Format(message, arg0), ex);
+        }
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="args">{num}参数值</param>
+        public void ErrorFormat(string message, Exception ex = null, params object[] args)
+        {
+            this.Error(string.Format(message, args), ex);
+        }
 
         /// <summary>
         /// 新增日志信息

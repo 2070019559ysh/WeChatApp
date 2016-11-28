@@ -12,6 +12,48 @@ namespace WeChatApp.Core.IManage
     /// </summary>
     public interface ILogMessageManager
     {
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        void Warn(string message);
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="arg0">{num}参数值</param>
+        void WarnFormat(string message, object arg0);
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="args">{num}参数值</param>
+        void WarnFormat(string message, params object[] args);
+
+        /// <summary>
+        /// 记录Error级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="ex">异常对象</param>
+        void Error(string message, Exception ex = null);
+
+        /// <summary>
+        /// 记录Error级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="arg0">{num}参数值</param>
+        void ErrorFormat(string message, Exception ex = null, object arg0 = null);
+
+        /// <summary>
+        /// 记录Warn级别的日志信息
+        /// </summary>
+        /// <param name="message">日志信息</param>
+        /// <param name="args">{num}参数值</param>
+        void ErrorFormat(string message, Exception ex = null, params object[] args);
+
         /// <summary>
         /// 新增日志信息
         /// </summary>

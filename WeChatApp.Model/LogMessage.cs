@@ -24,7 +24,7 @@ namespace WetChatApp.Model
         /// <summary>
         /// 线程Id
         /// </summary>
-        public string Thread { get; set; }
+        public int Thread { get; set; }
 
         /// <summary>
         /// 日志等级，Info、Warn、Error
