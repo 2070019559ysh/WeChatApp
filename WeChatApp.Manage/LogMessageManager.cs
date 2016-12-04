@@ -84,13 +84,15 @@ namespace WeChatApp.Manage
             };
             if (ex != null)
             {
-                logMessage.ExMessage = string.Format("异常信息：{0}", ex.Message);
-                logMessage.ExMessage += string.Format("异常堆栈：{0}", ex.StackTrace);
+                StringBuilder logText = new StringBuilder();
+                logText.AppendLine(string.Format("异常信息：{0}", ex.Message));
+                logText.AppendLine(string.Format("异常堆栈：{0}", ex.StackTrace));
                 if (ex.InnerException != null)
                 {
-                    logMessage.ExMessage += string.Format("异常信息：{0}", ex.InnerException.Message);
-                    logMessage.ExMessage += string.Format("异常堆栈：{0}", ex.InnerException.StackTrace);
+                    logText.AppendLine(string.Format("异常信息：{0}", ex.InnerException.Message));
+                    logText.AppendLine(string.Format("异常堆栈：{0}", ex.InnerException.StackTrace));
                 }
+                logMessage.ExMessage += logText;
             }
             logMessageService.InsertLog(logMessage);
         }
