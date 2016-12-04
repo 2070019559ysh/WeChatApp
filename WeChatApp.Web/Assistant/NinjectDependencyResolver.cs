@@ -69,6 +69,7 @@ namespace WeChatApp.Web.Assistant
 
         public void Dispose()
         {
+            kernel.Dispose();
             //throw new NotImplementedException();
         }
     }

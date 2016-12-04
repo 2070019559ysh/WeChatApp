@@ -12,23 +12,23 @@ namespace WeChatApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly LogHelper log = new LogHelper(typeof(HomeController));
+
         /// <summary>
         /// 对接微信实体对象
         /// </summary>
-        private readonly IConnect connectWeChat;
-        private readonly LogHelper log=new LogHelper(typeof(HomeController));
-
         [Inject]
-        public ILogMessageManager logManager;
+        public IConnect connectWeChat { get; set; }
 
+        /// <summary>
+        /// 数据库记录关键日志对象
+        /// </summary>
         [Inject]
-        public HomeController(IConnect connect)
-        {
-            connectWeChat = connect;
-        }
+        public ILogMessageManager logManager{ get; set; }
 
         public ActionResult Index()
         {
+            this.logManager.LogType = GetType();
             log.Info("进入Home/Index");
             if (connectWeChat.CheckSignature(Request))
             {
@@ -39,8 +39,8 @@ namespace WeChatApp.Web.Controllers
             log.InfoFormat("测试Warn日志,异常参数：{0}",25);
             log.Warn("测试Warn日志");
             log.Error("测试Warn日志");
-            log.ErrorFormat("测试Warn日志{0}",new Exception("异常请查看内部信息"),",发生自定义错误");
-            logManager.InsertLog("测试Warn日志{0}", new Exception("异常请查看内部信息"), ",发生自定义错误");
+            log.ErrorFormat("测试Warn日志,{0}",new Exception("异常请查看内部信息"),",发生自定义错误");
+            logManager.ErrorFormat("测试Warn日志,{0}", new Exception("异常请查看内部信息"), ",发生自定义错误");
             //connectWeChat.GetAccessToken();
             return View();
         }

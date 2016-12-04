@@ -14,7 +14,7 @@ namespace WetChatApp.Model
         /// <summary>
         /// 日志Id
         /// </summary>
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// 记录时间

@@ -12,6 +12,10 @@ namespace WeChatApp.Core.IManage
     /// </summary>
     public interface ILogMessageManager
     {
+        /// <summary>
+        /// 记录日志有关的类信息
+        /// </summary>
+        Type LogType { get; set; }
 
         /// <summary>
         /// 记录Warn级别的日志信息

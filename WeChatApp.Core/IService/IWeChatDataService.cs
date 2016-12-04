@@ -38,7 +38,7 @@ namespace WeChatApp.Core.IService
         /// </summary>
         /// <param name="id">微信数据Id</param>
         /// <returns>微信数据对象</returns>
-        WeChatData SearchWeChatData(int id);
+        WeChatData SearchWeChatData(Guid id);
 
         /// <summary>
         /// 根据微信数据的Key查找微信数据对象

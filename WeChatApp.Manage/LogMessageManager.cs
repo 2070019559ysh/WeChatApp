@@ -21,14 +21,13 @@ namespace WeChatApp.Manage
         /// 依赖注入数据库记录系统日志操作实现类
         /// </summary>
         [Inject]
-        public ILogMessageService logMessageService;
+        public ILogMessageService logMessageService { get; set; }
         private readonly LogHelper log = new LogHelper(typeof(LogMessageManager));
-        private readonly Type logType;
 
-        public LogMessageManager(Type logType)
-        {
-            this.logType = logType;
-        }
+        /// <summary>
+        /// 记录日志有关的类信息
+        /// </summary>
+        public Type LogType { get; set; }
 
         /// <summary>
         /// 记录Warn级别的日志信息
@@ -40,7 +39,7 @@ namespace WeChatApp.Manage
             {
                 Level = "Warn",
                 Thread = Thread.CurrentThread.ManagedThreadId,
-                Logger = logType.FullName,
+                Logger = LogType.FullName,
                 LogTime = DateTime.Now,
                 Message = message
             };
@@ -78,19 +77,19 @@ namespace WeChatApp.Manage
             {
                 Level = "Error",
                 Thread = Thread.CurrentThread.ManagedThreadId,
-                Logger = logType.FullName,
+                Logger = LogType.FullName,
                 LogTime = DateTime.Now,
                 Message = message
             };
             if (ex != null)
             {
                 StringBuilder logText = new StringBuilder();
-                logText.AppendLine(string.Format("异常信息：{0}", ex.Message));
-                logText.AppendLine(string.Format("异常堆栈：{0}", ex.StackTrace));
+                logText.AppendLine(string.Format("异常信息：{0}。", ex.Message));
+                logText.AppendLine(string.Format("异常堆栈：{0}。", ex.StackTrace));
                 if (ex.InnerException != null)
                 {
-                    logText.AppendLine(string.Format("异常信息：{0}", ex.InnerException.Message));
-                    logText.AppendLine(string.Format("异常堆栈：{0}", ex.InnerException.StackTrace));
+                    logText.AppendLine(string.Format("异常信息：{0}。", ex.InnerException.Message));
+                    logText.AppendLine(string.Format("异常堆栈：{0}。", ex.InnerException.StackTrace));
                 }
                 logMessage.ExMessage += logText;
             }

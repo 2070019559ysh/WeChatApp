@@ -14,7 +14,7 @@ namespace WeChatApp.Model
         /// <summary>
         /// ID
         /// </summary>
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// 微信数据的键（多记录中必须唯一）

@@ -26,11 +26,12 @@ namespace WeChatApp.Service
         public bool InsertWeChatData(WeChatData weChatData)
         {
             log.InfoFormat("新增一条微信数据记录InsertWeChatData((weChatData.Key:{0},weChatData.Value:{1})", weChatData.Key, weChatData.Value);
-            string sql="INSERT INTO WeChatData([Key],Value,UpdateTime) VALUES(@key,@value,@updateTime)";
-            SqlParameter[] paras=new SqlParameter[]{
-            new SqlParameter("@key",weChatData.Key),
-            new SqlParameter("@value",weChatData.Value),
-            new SqlParameter("@updateTime",weChatData.UpdateTime)
+            string sql="INSERT INTO WeChatData(Id,[Key],Value,UpdateTime) VALUES(@Id,@key,@value,@updateTime)";
+            SqlParameter[] paras = new SqlParameter[]{
+                new SqlParameter("@Id",Guid.NewGuid()),
+                new SqlParameter("@key",weChatData.Key),
+                new SqlParameter("@value",weChatData.Value),
+                new SqlParameter("@updateTime",weChatData.UpdateTime)
             };
             int row = sqlHelper.ExecuteNonQuery(sql, paras);
             log.InfoFormat("新增一条微信数据记录InsertWeChatData(),影响行数：", row);
@@ -83,7 +84,7 @@ namespace WeChatApp.Service
         /// </summary>
         /// <param name="id">微信数据Id</param>
         /// <returns>微信数据对象</returns>
-        public WeChatData SearchWeChatData(int id)
+        public WeChatData SearchWeChatData(Guid id)
         {
             log.InfoFormat("根据微信数据Id查找微信数据对象_SearchWeChatData(id:{0})", id);
             string sql = "SELECT Id,[Key],Value,UpdateTime FROM WeChatData WHERE Id=@id";
@@ -131,7 +132,7 @@ namespace WeChatApp.Service
                 log.Info("根据微信数据的Key查找微信数据对象_SearchWeChatData()，读取到一条数据");
                 weChatData = new WeChatData()
                 {
-                    Id = Convert.ToInt32(dataReader["Id"]),
+                    Id = Guid.Parse(Convert.ToInt32(dataReader["Id"]).ToString()),
                     Key = dataReader["Key"].ToString(),
                     Value = dataReader["Value"].ToString(),
                     UpdateTime = Convert.ToDateTime(dataReader["UpdateTime"])

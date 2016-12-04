@@ -68,7 +68,7 @@ namespace WeChatApp.Manage
         /// </summary>
         /// <param name="id">微信数据Id</param>
         /// <returns>微信数据对象</returns>
-        public WeChatData SearchWeChatData(int id)
+        public WeChatData SearchWeChatData(Guid id)
         {
             try
             {

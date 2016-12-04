@@ -25,9 +25,10 @@ namespace WeChatApp.Service
         /// <returns>是否新增成功</returns>
         public bool InsertLog(LogMessage logMessage)
         {
-            string sql = "INSERT INTO LogMessage(Thread,[Level],Logger,[Message],ExMessage) VALUES(@Thread,@Level,@Logger,@Message,@ExMessage)";
+            string sql = "INSERT INTO LogMessage(Id,Thread,[Level],Logger,[Message],ExMessage) VALUES(@Id,@Thread,@Level,@Logger,@Message,@ExMessage)";
             SqlParameter[] paras = new SqlParameter[]
             {
+                new SqlParameter("@Id",Guid.NewGuid()),
                 new SqlParameter("@Thread",Thread.CurrentThread.ManagedThreadId),
                 new SqlParameter("@Level",logMessage.Level),
                 new SqlParameter("@Logger",logMessage.Logger),
@@ -52,9 +53,9 @@ namespace WeChatApp.Service
             if (dataReader.Read())
             {
                 logMessage = new LogMessage();
-                logMessage.Id = Convert.ToInt32(dataReader["Id"]);
+                logMessage.Id = Guid.Parse(dataReader["Id"].ToString());
                 logMessage.LogTime = Convert.ToDateTime(dataReader["LogTime"]);
-                logMessage.Thread = dataReader["Thread"].ToString();
+                logMessage.Thread = Convert.ToInt32(dataReader["Thread"].ToString());
                 logMessage.Level = dataReader["Level"].ToString();
                 logMessage.Logger = dataReader["Logger"].ToString();
                 logMessage.Message = dataReader["Message"].ToString();
@@ -94,9 +95,9 @@ namespace WeChatApp.Service
             {
                 LogMessage logMessage = new LogMessage();
                 logMessage = new LogMessage();
-                logMessage.Id = Convert.ToInt32(dataReader["Id"]);
+                logMessage.Id = Guid.Parse((dataReader["Id"]).ToString());
                 logMessage.LogTime = Convert.ToDateTime(dataReader["LogTime"]);
-                logMessage.Thread = dataReader["Thread"].ToString();
+                logMessage.Thread = Convert.ToInt32(dataReader["Thread"].ToString());
                 logMessage.Level = dataReader["Level"].ToString();
                 logMessage.Logger = dataReader["Logger"].ToString();
                 logMessage.Message = dataReader["Message"].ToString();
